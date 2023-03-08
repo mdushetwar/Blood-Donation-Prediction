@@ -51,21 +51,39 @@
       input[type="submit"]:hover {
         background-color: #5A5A5A;
       }
+
+      .bottom-button {
+        margin-top: 50px;
+        text-align: center;
+      }
     </style>
+    <script>
+      function validateForm() {
+        var lastDonation = parseInt(document.getElementById("months_since_last_donation").value);
+        var firstDonation = parseInt(document.getElementById("months_since_first_donation").value);
+        if (lastDonation > firstDonation) {
+          alert("Oops! Looks like you entered an invalid value. 'Months since last donation' should be less than or equal to 'Months since first donation'.");
+          return false;
+        }
+        return true;
+      }
+    </script>
   </head>
   <body>
     <h1>Blood Donor Prediction</h1>
     <form action="/predict" method="post">
       <label for="months_since_last_donation">Months since last donation:</label>
       <input type="number" name="months_since_last_donation" id="months_since_last_donation" required>
-
+      
       <label for="months_since_first_donation">Months since first donation:</label>
       <input type="number" name="months_since_first_donation" id="months_since_first_donation" required>
 
       <label for="number_of_donations">Number of donations:</label>
       <input type="number" name="number_of_donations" id="number_of_donations" required>
-
-      <input type="submit" value="Predict">
+      
+      <div class="bottom-button">
+        <input type="submit" value="Predict">
+      </div>
     </form>
   </body>
 </html>
