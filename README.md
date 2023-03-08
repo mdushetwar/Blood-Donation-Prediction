@@ -68,13 +68,14 @@ This project is licensed under the Apache-2.0 license
 
 
 ## Contact
-In case, you have questions or wants to get in touch with you regarding your project, please contact at
+In case, you have questions or wants to get in touch with us regarding our project, please contact:
 
 mdushetwar@gmail.com (Mayur Dushetwar)
 amitkumar829972@gmail.com (Amit Kumar)
 
 
 Also, if you're interested in exploring other projects, be sure to check out my website. I'm sure you'll find something that piques your interest!
+
 www.mayurdushetwar.com
 
 
