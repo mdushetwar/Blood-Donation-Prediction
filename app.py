@@ -28,9 +28,9 @@ def predict():
 
     # Preprocessing
     feature_list= list(features)
-    feature_sqrt= [np.sqrt(x) for x in feature_list]
+    feature_sqrt= np.array([np.sqrt(x) for x in feature_list]).reshape(1,-1)
     feature_scaled=scaler.transform(feature_sqrt)
-    feature_transformed= np.array(feature_scaled).reshape(1,-1)
+    feature_transformed= np.array(feature_scaled)
 
     # prediction
     prediction= (model.predict_proba(feature_transformed)[:, 1] > 0.6).astype(int)

@@ -56,6 +56,18 @@
         margin-top: 50px;
         text-align: center;
       }
+
+      .output {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 50px;
+      }
+
+      .error {
+        font-size: 24px;
+        color: red;
+        margin-top: 50px;
+      }
     </style>
     <script>
       function validateForm() {
@@ -71,7 +83,7 @@
   </head>
   <body>
     <h1>Blood Donor Prediction</h1>
-    <form action="/predict" method="post">
+    <form action="/predict" method="post" onsubmit="return validateForm()">
       <label for="months_since_last_donation">Months since last donation:</label>
       <input type="number" name="months_since_last_donation" id="months_since_last_donation" required>
       
@@ -85,5 +97,18 @@
         <input type="submit" value="Predict">
       </div>
     </form>
-  </body>
-</html>
+
+    {% if prediction is not none %}
+      {% if prediction == 1 %}
+        <div class="output">The donor is likely to donate blood again.</div>
+      {% else %}
+        <div class="output">The donor is unlikely to donate blood again.</div>
+      {% endif %}
+    {% endif %}
+
+    {% if error is not none %}
+    <div class="output">{{ error }}</div>
+    {% endif %}
+    
+      </body>
+    </html>
