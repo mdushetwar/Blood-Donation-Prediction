@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blood Donor Prediction</title>
+    <style>
+      body {
+        background-color: #F7CAC9;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: #5A5A5A;
+      }
+
+      h1 {
+        font-size: 48px;
+        font-weight: bold;
+        color: #B80C09;
+        text-align: center;
+        margin-top: 100px;
+      }
+
+      form {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      label {
+        display: block;
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      input[type="number"] {
+        font-size: 18px;
+        padding: 10px;
+        border: 2px solid #B80C09;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        font-size: 24px;
+        padding: 10px 30px;
+        background-color: #B80C09;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 50px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #5A5A5A;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Blood Donor Prediction</h1>
+    <form action="/predict" method="post">
+      <label for="months_since_last_donation">Months since last donation:</label>
+      <input type="number" name="months_since_last_donation" id="months_since_last_donation" required>
+
+      <label for="months_since_first_donation">Months since first donation:</label>
+      <input type="number" name="months_since_first_donation" id="months_since_first_donation" required>
+
+      <label for="number_of_donations">Number of donations:</label>
+      <input type="number" name="number_of_donations" id="number_of_donations" required>
+
+      <input type="submit" value="Predict">
+    </form>
+  </body>
+</html>
