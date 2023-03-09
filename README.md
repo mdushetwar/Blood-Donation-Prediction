@@ -58,9 +58,10 @@ git push origin feature/your-new-feature
 
 
 ## Credits
+- Mayur Dushetwar
+- Amit Kumar
 - Datamites
 - Rubixe
-- Amit Kumar
 
 
 ## Licence
