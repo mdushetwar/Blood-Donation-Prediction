@@ -1,5 +1,5 @@
 # Importing main Libraries
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, request
 import pandas as pd
 import numpy as np
 import pickle
@@ -10,12 +10,12 @@ app= Flask(__name__)
 
 # Loading model and preprocessor
 
-model = pickle.load(open('model.pkl', 'rb'))
+model = pickle.load(open('svc_model.pkl', 'rb'))
 scaler= pickle.load(open('scaler.pkl', 'rb'))
 
 @app.route('/')
 def Home():
-    return render_template('index.html')
+    return render_template('index.html', prediction=None, error=None)
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -33,9 +33,9 @@ def predict():
     feature_transformed= np.array(feature_scaled)
 
     # prediction
-    prediction= (model.predict_proba(feature_transformed)[:, 1] > 0.6).astype(int)
+    prediction= model.predict_proba(feature_transformed)[:, 1] 
 
-    return jsonify({'prediction': prediction.tolist()})
+    return render_template('index.html', prediction=prediction[0])
 
 
 if __name__ == '__main__':

@@ -53,7 +53,7 @@
       }
 
       .bottom-button {
-        margin-top: 50px;
+        margin-top: 20px;
         text-align: center;
       }
 
@@ -68,6 +68,12 @@
         color: red;
         margin-top: 50px;
       }
+
+      .clear-button {
+        margin-top: 20px;
+        text-align: center;
+      }
+
     </style>
     <script>
       function validateForm() {
@@ -99,16 +105,37 @@
     </form>
 
     {% if prediction is not none %}
-      {% if prediction == 1 %}
-        <div class="output">The donor is likely to donate blood again.</div>
-      {% else %}
-        <div class="output">The donor is unlikely to donate blood again.</div>
-      {% endif %}
+      <div class="output">
+        <p style="font-size: 45px; font-weight: bold; text-align: center;">
+          {% if prediction >= 0.44 %}
+            The donor is <span style="color: green">likely</span> to donate blood in March 2007.
+          {% else %}
+            The donor is <span style="color: red">unlikely</span> to donate blood in March 2007.
+          {% endif %}
+        </p>
+      </div>
     {% endif %}
+
+
 
     {% if error is not none %}
     <div class="output">{{ error }}</div>
     {% endif %}
+
+    <div class="clear-button">
+      <button type="button" onclick="clearOutput()">Clear</button>
+    </div>
+    
+    <script>
+      function clearOutput() {
+      var output = document.querySelector(".output");
+      if (output !== null) {
+        output.innerHTML = "";
+      }
+    }
+    </script>
+    
+  
     
       </body>
     </html>
